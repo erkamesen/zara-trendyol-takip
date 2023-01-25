@@ -81,6 +81,12 @@ crontab -l
 ![Seçim_039](https://user-images.githubusercontent.com/120065120/214652636-c16e3413-88f8-469d-aa10-deac7cb567ff.png)
 
 
+## Task Scheduler - Windows
+
+Kendisini hiç kullanmadım. Sadece alternatifini aramayın diye yazıyorum. 
+[Buradan](https://www.hakanuzuner.com/powershell-scriptleri-icin-gorev-zamanlayiciyi-task-scheduler/) yardım alabilirsiniz.
+
+
 
 
 
