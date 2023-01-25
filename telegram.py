@@ -3,8 +3,9 @@ import requests
 
 class Condition(Enum):
 
-    INFO = "ℹ️"
+    INFO = "✅"
     DISCOUNT = "🤑"
+    WARNING = "🚨"
 
 class Logger:
 
@@ -33,3 +34,6 @@ class Logger:
         
     def discount(self, message):
         self.log(message, Condition.DISCOUNT)
+        
+    def warning(self, message):
+        self.log(message, Condition.WARNING)
