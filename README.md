@@ -4,7 +4,7 @@ Zara - Trendyol  Telegram Bildirimli Stok Fiyat Takip Botu
 
 ## Kullanım:
 Terminal üzerinden:
-- git clone https://github.com/erkamesen/Zara-TakipBotu.git (Bulunduğunuz dizine kopyasını oluşturma) 
+- git clone https://github.com/erkamesen/zara-trendyol-takip.git (Bulunduğunuz dizine kopyasını oluşturma) 
 - cd Zara-TakipBotu (Oluşturulan dizinin içine giriyoruz.)
 - Linux - MacOS
 ```
@@ -15,7 +15,7 @@ python3 main.py
 python main.py
 ```
 
-Zara classından oluşturduğunuz nesnelerinize parametre olarak ürünlerin URL lerini vererek belirtilen ürünleri takibe alabilirsiniz. 
+Shop classından oluşturduğunuz nesnelerinize parametre olarak ürünlerin URL lerini vererek belirtilen ürünleri takibe alabilirsiniz. 
 Telegram dan aldığınız APIKey i ve chatID nizi Logger sınıfından ürettiğimiz logger nesnelerine paramertre olarak vererek telegram bildirimi sağlayabilirsiniz.
 ```
 logger = Logger(
