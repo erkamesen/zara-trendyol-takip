@@ -1,5 +1,5 @@
-# Zara-TakipBotu
-Zara - Telegram Bildirimli Stok Fiyat Takip Botu
+# Zara-Trendyol Takip Botu
+Zara - Trendyol  Telegram Bildirimli Stok Fiyat Takip Botu
 
 
 ## Kullanım:
