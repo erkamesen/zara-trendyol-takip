@@ -6,12 +6,21 @@ import os
 load_dotenv()
 
 
-## TELEGRAM API KEY VE CHATID GİR
+# TELEGRAM API KEY VE CHATID GİR
 # 2 ADET HESABA ATTIĞIM İÇİN 2 ADET LOGGER KULLANDIM
 logger = Logger(
     token=os.getenv("APIKey"), chat_id=os.getenv('chatID1'))
 logger2 = Logger(
     token=os.getenv("APIKey"), chat_id=os.getenv("chatID2"))
+
+
+## MESSAGE UTILS ##
+def stock_message(brand, url, name, price):
+    return f"{brand}\Stoğa Girdi !!!!\n⬇⬇⬇⬇⬇\nÜrün Adı: {name}\nGüncel Fiyat: {price} TL\n⬆⬆⬆⬆⬆\n{url}"
+
+
+def discount_message(brand, url, name, current_price, old_price):
+    return f"{brand}\nİndirime Girdi YETİİİİİŞ !!!!\n⬇⬇⬇⬇⬇\nÜrün Adı: {name}\nGüncel Fiyat: {current_price} TL\nÖnceki Fiyat: {old_price} TL\n⬆⬆⬆⬆⬆\n{url}"
 
 
 """ STOK TAKİBİ """
@@ -36,21 +45,20 @@ stock7 = Shop(stock_URL7)
 stock8 = Shop(stock_URL8)
 
 
-def stock_message(url, name, price):
-    return f"Stoğa Girdi !!!!\n⬇⬇⬇⬇⬇\nÜrün Adı: {name}\nGüncel Fiyat: {price} TL\n⬆⬆⬆⬆⬆\n{url}"
-
-
 for product in Shop.stock_list:
     try:
         if product.is_stock:
-            stock_msg = stock_message(url=product.URL,
-                                    name=product.name,
-                                    price=product.price
-                                    )
+            stock_msg = stock_message(
+                brand=product.brand,
+                url=product.URL,
+                name=product.name,
+                price=product.price
+            )
             logger.info(message=stock_msg)
-            """ logger2.info(message=stock_msg) """
+            logger2.info(message=stock_msg)
     except:
-        logger.warning(message=f"{product.name} URL ile ilgili sıkıntı var yetiş {product.URL}")
+        logger.warning(
+            message=f"{product.name} URL ile ilgili sıkıntı var yetiş {product.URL}")
         continue
 
 
@@ -63,32 +71,34 @@ price_URL2 = "https://www.zara.com/tr/tr/suni-rugan-kol-cantasi-p16043010.html"
 price2 = 599.95
 price_URL3 = "https://www.zara.com/tr/tr/askisi-buzgulu-yarim-ay-kol-cantasi-p16050010.html"
 price3 = 799.95
+price_URL4 = "https://www.trendyol.com/straimsah-desenli-pantolon-p-372037428?boutiqueId=618534&merchantId=150331&utm_source=share"
+price4 = 299.95
 
 
 # URL lerimizden nesnelerimizi oluşturuyoruz.
 discount1 = Shop(price_URL1, price_check=True)
 discount2 = Shop(price_URL2, price_check=True)
 discount3 = Shop(price_URL3, price_check=True)
-
+discount4 = Shop(price_URL4, price_check=True)
 # Fiyatlarımızı listemizde topluyoruz.
-price_list = [price1, price2, price3]
-
-
-def discount_message(url, name, current_price, old_price):
-    return f"İndirime Girdi YETİİİİİŞ !!!!\n⬇⬇⬇⬇⬇\nÜrün Adı: {name}\nGüncel Fiyat: {current_price} TL\nÖnceki Fiyat: {old_price} TL\n⬆⬆⬆⬆⬆\n{url}"
+price_list = [price1, price2, price3, price4]
 
 
 for sira, disc in enumerate(Shop.discount_list):
     discount_product = Shop.discount_list[sira]
     try:
         if float(discount_product.price) < price_list[sira]:
-            discount_msg = discount_message(url=discount_product.URL,
-                                            name=discount_product.name,
-                                            current_price=discount_product.price,
-                                            old_price=price_list[sira],
-                                            )
+            print(discount_product.price, price_list[sira])
+            discount_msg = discount_message(
+                brand=discount_product.brand,
+                url=discount_product.URL,
+                name=discount_product.name,
+                current_price=discount_product.price,
+                old_price=price_list[sira],
+            )
             logger.discount(message=discount_msg)
-            """ logger2.discount(message=discount_msg) """
+            logger2.discount(message=discount_msg)
     except:
-        logger.warning(message=f"{discount_product.name} URL ile ilgili sıkıntı var yetiş {discount_product.URL}")
+        logger.warning(
+            message=f"{discount_product.name} Ürünle ile ilgili sıkıntı var yetiş {discount_product.URL}")
         continue
