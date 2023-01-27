@@ -15,12 +15,12 @@ logger2 = Logger(
 
 
 ## MESSAGE UTILS ##
-def stock_message(brand, url, name, price):
-    return f"{brand}\Stoğa Girdi !!!!\n⬇⬇⬇⬇⬇\nÜrün Adı: {name}\nGüncel Fiyat: {price} TL\n⬆⬆⬆⬆⬆\n{url}"
+def stock_message(url, name, price):
+    return f"Stoğa Girdi !!!!\n⬇⬇⬇⬇⬇\nÜrün Adı: {name}\nGüncel Fiyat: {price} TL\n⬆⬆⬆⬆⬆\n{url}"
 
 
-def discount_message(brand, url, name, current_price, old_price):
-    return f"{brand}\nİndirime Girdi YETİİİİİŞ !!!!\n⬇⬇⬇⬇⬇\nÜrün Adı: {name}\nGüncel Fiyat: {current_price} TL\nÖnceki Fiyat: {old_price} TL\n⬆⬆⬆⬆⬆\n{url}"
+def discount_message(url, name, current_price, old_price):
+    return f"İndirime Girdi YETİİİİİŞ !!!!\n⬇⬇⬇⬇⬇\nÜrün Adı: {name}\nGüncel Fiyat: {current_price} TL\nÖnceki Fiyat: {old_price} TL\n⬆⬆⬆⬆⬆\n{url}"
 
 
 """ STOK TAKİBİ """
@@ -49,7 +49,6 @@ for product in Shop.stock_list:
     try:
         if product.is_stock:
             stock_msg = stock_message(
-                brand=product.brand,
                 url=product.URL,
                 name=product.name,
                 price=product.price
@@ -71,7 +70,7 @@ price_URL2 = "https://www.zara.com/tr/tr/suni-rugan-kol-cantasi-p16043010.html"
 price2 = 599.95
 price_URL3 = "https://www.zara.com/tr/tr/askisi-buzgulu-yarim-ay-kol-cantasi-p16050010.html"
 price3 = 799.95
-price_URL4 = "https://www.trendyol.com/straimsah-desenli-pantolon-p-372037428?boutiqueId=618534&merchantId=150331&utm_source=share"
+price_URL4 = "https://www.trendyol.com/stradivarius/5-cepli-suni-deri-timsah-desenli-pantolon-p-372037428?boutiqueId=618534&merchantId=150331&utm_source=share"
 price4 = 299.95
 
 
@@ -90,7 +89,6 @@ for sira, disc in enumerate(Shop.discount_list):
         if float(discount_product.price) < price_list[sira]:
             print(discount_product.price, price_list[sira])
             discount_msg = discount_message(
-                brand=discount_product.brand,
                 url=discount_product.URL,
                 name=discount_product.name,
                 current_price=discount_product.price,

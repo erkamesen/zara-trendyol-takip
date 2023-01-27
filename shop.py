@@ -16,7 +16,6 @@ class Shop:
         self.html_page = self.get_html()
         self.name = self.get_name()
         self.price = self.get_price()
-        self.brand = None
         self.stock_or_discount()
         self.stock_control()
 
@@ -44,40 +43,48 @@ class Shop:
         stock kontrolu yapıyor ve main.py da yakalanmak üzere objenin boolean değerini
         döndürüyor.
         """
-        if TRENDYOL in self.URL:
-            button = self.html_page.find(class_="sold-out")
-            if button:
-                self.is_stock = False
-            elif ZARA in self.URL:
-                self.is_stock = True
+        try:
+            if TRENDYOL in self.URL:
+                button = self.html_page.find(class_="sold-out")
+                if button:
+                    self.is_stock = False
+                elif ZARA in self.URL:
+                    self.is_stock = True
 
-        elif ZARA in self.URL:
-            buttons = self.html_page.find(class_="zds-button")
-            if buttons.text == "TÜKENDİ":
-                self.is_stock = False
-            else:
-                self.is_stock = True
+            elif ZARA in self.URL:
+                buttons = self.html_page.find(class_="zds-button")
+                if buttons.text == "TÜKENDİ":
+                    self.is_stock = False
+                else:
+                    self.is_stock = True
+        except AttributeError:
+            self.is_stock = True
 
     def get_name(self):
-        if TRENDYOL in self.URL:
-            self.brand = "Trendyol"
-            name = self.html_page.find(class_="pr-new-br")
-            name = name.span.text.strip()
-            return name
-        elif ZARA in self.URL:
-            self.brand = "Zara"
-            header = self.html_page.find(
-                class_="product-detail-info__header-name").text
-            return header
+        try:
+            if TRENDYOL in self.URL:
+                name = self.html_page.find(class_="pr-new-br")
+                name = name.span.text.strip()
+                return name
+            elif ZARA in self.URL:
+                header = self.html_page.find(
+                    class_="product-detail-info__header-name").text
+                return header
+        except AttributeError:
+            return f"URL Silinmiş {self.URL}"
 
     def get_price(self):
-        if TRENDYOL in self.URL:
-            price = self.html_page.find(class_="prc-dsc")
-            price = price.text.split(" ")[0].replace(",", ".")
-            return price
-        elif ZARA in self.URL:
-            current_price_text = self.html_page.find(
-                class_="price-current__amount").text
-            current_price = current_price_text.split(' ')[0]
-            current_price = current_price.replace(",", ".")
-            return current_price
+        try:
+            if TRENDYOL in self.URL:
+                price = self.html_page.find(class_="prc-dsc")
+                price = price.text.split(" ")[0].replace(",", ".")
+                return price
+            elif ZARA in self.URL:
+                current_price_text = self.html_page.find(
+                    class_="price-current__amount").text
+                current_price = current_price_text.split(' ')[0]
+                current_price = current_price.replace(",", ".")
+                return current_price
+        except AttributeError:
+            return 99999
+        
