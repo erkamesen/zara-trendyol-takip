@@ -48,7 +48,7 @@ class Shop:
                 button = self.html_page.find(class_="sold-out")
                 if button:
                     self.is_stock = False
-                elif ZARA in self.URL:
+                else:
                     self.is_stock = True
 
             elif ZARA in self.URL:
