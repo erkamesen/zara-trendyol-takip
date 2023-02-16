@@ -53,7 +53,8 @@ class Shop:
 
             elif ZARA in self.URL:
                 buttons = self.html_page.find(class_="zds-button")
-                if buttons.text == "TÜKENDİ":
+                no_stock_list = ["TÜKENDİ", "BENZER ÜRÜNLER"]
+                if buttons.text in no_stock_list:
                     self.is_stock = False
                 else:
                     self.is_stock = True
