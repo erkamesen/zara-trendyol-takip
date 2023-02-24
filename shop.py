@@ -1,6 +1,15 @@
 import requests
 from bs4 import BeautifulSoup
 from requests.exceptions import ConnectionError
+from telegram import Logger
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+
+logger = Logger(
+    token=os.getenv("APIKey"), chat_id=os.getenv('chatID1'))
 
 TRENDYOL = "www.trendyol.com"
 ZARA = "www.zara.com"
@@ -25,7 +34,7 @@ class Shop:
             soup = BeautifulSoup(response.text, 'html.parser')
             return soup
         except ConnectionError:
-            return False
+            logger.warning(message=f"{self.name} gelen response istenilen türde değil lütfen siteyi kontrol et.{self.URL}\nfunc: get_html")
 
     def stock_or_discount(self):
         """
@@ -59,7 +68,7 @@ class Shop:
                 else:
                     self.is_stock = True
         except AttributeError:
-            self.is_stock = True
+            logger.warning(message=f"{self.name} Ürünle ile ilgili sıkıntı var yetiş {self.URL}\nfunc: stock_control")
 
     def get_name(self):
         try:
@@ -72,7 +81,7 @@ class Shop:
                     class_="product-detail-info__header-name").text
                 return header
         except AttributeError:
-            return f"URL Silinmiş {self.URL}"
+            logger.warning(message=f"{self.name} Ürün silinmiş olabilir {self.URL}\nfunc: get_name")
 
     def get_price(self):
         try:
@@ -87,5 +96,5 @@ class Shop:
                 current_price = current_price.replace(",", ".")
                 return current_price
         except AttributeError:
-            return 99999
+            logger.warning(message=f"{self.name} Ürünün fiyatıyla alakalı bir problem var. {self.URL}\nfunc: get_price")
         
