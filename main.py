@@ -32,7 +32,7 @@ stock_URL4 = "https://www.zara.com/tr/tr/share/-p05854714.html?utm_campaign=prod
 stock_URL5 = "https://www.zara.com/tr/tr/share/-p03046274.html?utm_campaign=productMultiShare&utm_medium=mobile_sharing_iOS&utm_source=red_social_movil&v1=223692936"
 stock_URL6 = "https://www.zara.com/tr/tr/share/-p03046313.html?utm_campaign=productMultiShare &utm_medium=mobile_sharing_iOS&utm_source=red_social_movil&v1=188530143"
 stock_URL7 = "https://www.zara.com/tr/tr/suni-deri-oversize-ceket-p03427811.html?utm_campaign=productMultiShare&utm_medium=mobile_sharing_iOS&utm_source=red_social_movil&v1=186019786"
-stock_URL8 = "https://www.trendyol.com/stradivarius/suni-kurk-ceket-p-453223690?boutiqueId=618534&merchantId=150331&utm_source=share"
+
 
 
 stock1 = Shop(stock_URL1)
