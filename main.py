@@ -30,8 +30,7 @@ stock_URL2 = "https://www.zara.com/tr/tr/share/-p01255896.html?utm_campaign=prod
 stock_URL3 = "https://www.zara.com/tr/tr/share/-p01255825.html?utm_campaign=productMultiShare&utm_medium=mobile_sharing_iOS&utm_source=red_social_movil&v1=186613774"
 stock_URL4 = "https://www.zara.com/tr/tr/share/-p05854714.html?utm_campaign=productMultiShare&utm_medium=mobile_sharing_iOS&utm_source=red_social_movil&v1=178078856"
 stock_URL5 = "https://www.zara.com/tr/tr/share/-p03046274.html?utm_campaign=productMultiShare&utm_medium=mobile_sharing_iOS&utm_source=red_social_movil&v1=223692936"
-stock_URL6 = "https://www.zara.com/tr/tr/share/-p03046313.html?utm_campaign=productMultiShare &utm_medium=mobile_sharing_iOS&utm_source=red_social_movil&v1=188530143"
-stock_URL7 = "https://www.zara.com/tr/tr/suni-deri-oversize-ceket-p03427811.html?utm_campaign=productMultiShare&utm_medium=mobile_sharing_iOS&utm_source=red_social_movil&v1=186019786"
+
 
 
 
@@ -40,9 +39,7 @@ stock2 = Shop(stock_URL2)
 stock3 = Shop(stock_URL3)
 stock4 = Shop(stock_URL4)
 stock5 = Shop(stock_URL5)
-stock6 = Shop(stock_URL6)
-stock7 = Shop(stock_URL7)
-stock8 = Shop(stock_URL8)
+
 
 
 for product in Shop.stock_list:
