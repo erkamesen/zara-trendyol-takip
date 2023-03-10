@@ -26,20 +26,8 @@ def discount_message(url, name, current_price, old_price):
 """ STOK TAKİBİ """
 
 stock_URL1 = "https://www.zara.com/tr/tr/share/-p04387241.html?utm_campaign=productMultiShare&utm_medium=mobile_sharing_iOS&utm_source=red_social_movil&v1=223811112"
-stock_URL2 = "https://www.zara.com/tr/tr/share/-p01255896.html?utm_campaign=productMultiShare&utm_medium=mobile_sharing_iOS&utm_source=red_social_movil&v1=224850511"
-stock_URL3 = "https://www.zara.com/tr/tr/share/-p01255825.html?utm_campaign=productMultiShare&utm_medium=mobile_sharing_iOS&utm_source=red_social_movil&v1=186613774"
-stock_URL4 = "https://www.zara.com/tr/tr/share/-p05854714.html?utm_campaign=productMultiShare&utm_medium=mobile_sharing_iOS&utm_source=red_social_movil&v1=178078856"
-stock_URL5 = "https://www.zara.com/tr/tr/share/-p03046274.html?utm_campaign=productMultiShare&utm_medium=mobile_sharing_iOS&utm_source=red_social_movil&v1=223692936"
-
-
-
 
 stock1 = Shop(stock_URL1)
-stock2 = Shop(stock_URL2)
-stock3 = Shop(stock_URL3)
-stock4 = Shop(stock_URL4)
-stock5 = Shop(stock_URL5)
-
 
 
 for product in Shop.stock_list:
@@ -63,21 +51,13 @@ for product in Shop.stock_list:
 # Fiyat takibi için URL lerimizi ve fiyatlarımızı giriyoruz.
 price_URL1 = "https://www.zara.com/tr/tr/zw-90-s-wide-leg-suni-deri-pantolon-p02969242.html"
 price1 = 659.95
-price_URL2 = "https://www.zara.com/tr/tr/suni-rugan-kol-cantasi-p16043010.html"
-price2 = 599.95
-price_URL3 = "https://www.zara.com/tr/tr/askisi-buzgulu-yarim-ay-kol-cantasi-p16050010.html"
-price3 = 799.95
-price_URL4 = "https://www.trendyol.com/stradivarius/5-cepli-suni-deri-timsah-desenli-pantolon-p-372037428?boutiqueId=618534&merchantId=150331&utm_source=share"
-price4 = 299.95
 
 
 # URL lerimizden nesnelerimizi oluşturuyoruz.
 discount1 = Shop(price_URL1, price_check=True)
-discount2 = Shop(price_URL2, price_check=True)
-discount3 = Shop(price_URL3, price_check=True)
-discount4 = Shop(price_URL4, price_check=True)
+
 # Fiyatlarımızı listemizde topluyoruz.
-price_list = [price1, price2, price3, price4]
+price_list = [price1]
 
 
 for sira, disc in enumerate(Shop.discount_list):
