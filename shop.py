@@ -32,6 +32,7 @@ class Shop:
         try:
             response = requests.get(self.URL, headers=Shop._headers)
             soup = BeautifulSoup(response.text, 'html.parser')
+            print(soup)
             return soup
         except ConnectionError:
             logger.warning(message=f"{self.name} gelen response istenilen türde değil lütfen siteyi kontrol et.{self.URL}\nfunc: get_html")
@@ -62,13 +63,13 @@ class Shop:
 
             elif ZARA in self.URL:
                 buttons = self.html_page.find(class_="zds-button")
-                no_stock_list = ["TÜKENDİ", "BENZER ÜRÜNLER", "COMİNG SOON"]
+                no_stock_list = ["TÜKENDİ", "BENZER ÜRÜNLER"]
                 if buttons.text in no_stock_list:
                     self.is_stock = False
                 else:
                     self.is_stock = True
         except AttributeError:
-            logger.warning(message=f"{self.name} Ürünle ile ilgili sıkıntı var yetiş {self.URL}\nfunc: stock_control")
+            logger.warning(message=f"Ürünle ile ilgili sıkıntı var yetiş {self.URL}\nfunc: stock_control")
 
     def get_name(self):
         try:
@@ -81,7 +82,7 @@ class Shop:
                     class_="product-detail-info__header-name").text
                 return header
         except AttributeError:
-            logger.warning(message=f"{self.name} Ürün silinmiş olabilir {self.URL}\nfunc: get_name")
+            logger.warning(message=f"Ürün silinmiş olabilir {self.URL}\nfunc: get_name")
 
     def get_price(self):
         try:
@@ -96,5 +97,5 @@ class Shop:
                 current_price = current_price.replace(",", ".")
                 return current_price
         except AttributeError:
-            logger.warning(message=f"{self.name} Ürünün fiyatıyla alakalı bir problem var. {self.URL}\nfunc: get_price")
+            logger.warning(message=f"Ürünün fiyatıyla alakalı bir problem var. {self.URL}\nfunc: get_price")
         

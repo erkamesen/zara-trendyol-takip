@@ -7,11 +7,9 @@ load_dotenv()
 
 
 # TELEGRAM API KEY VE CHATID GİR
-# 2 ADET HESABA ATTIĞIM İÇİN 2 ADET LOGGER KULLANDIM
 logger = Logger(
     token=os.getenv("APIKey"), chat_id=os.getenv('chatID1'))
-logger2 = Logger(
-    token=os.getenv("APIKey"), chat_id=os.getenv("chatID2"))
+
 
 
 ## MESSAGE UTILS ##
@@ -25,9 +23,11 @@ def discount_message(url, name, current_price, old_price):
 
 """ STOK TAKİBİ """
 
-stock_URL1 = "https://www.zara.com/tr/tr/share/-p04387241.html?utm_campaign=productMultiShare&utm_medium=mobile_sharing_iOS&utm_source=red_social_movil&v1=223811112"
+""" STOK TAKİBİ YAPACAĞNIZ ÜRÜNLERİ AŞAĞIDAKİ GİBİ EKLEYİN """
 
+stock_URL1 = "https://www.zara.com/tr/tr/desenli-keten-karisimli-midi-elbise-p03286781.html?v1=255317336&v2=2184287"
 stock1 = Shop(stock_URL1)
+
 
 
 for product in Shop.stock_list:
@@ -39,7 +39,7 @@ for product in Shop.stock_list:
                 price=product.price
             )
             logger.info(message=stock_msg)
-            logger2.info(message=stock_msg)
+    
     except:
         logger.warning(
             message=f"{product.name} URL ile ilgili sıkıntı var yetiş {product.URL}")
@@ -49,8 +49,8 @@ for product in Shop.stock_list:
 """ FİYAT TAKİBİ """
 
 # Fiyat takibi için URL lerimizi ve fiyatlarımızı giriyoruz.
-price_URL1 = "https://www.zara.com/tr/tr/zw-90-s-wide-leg-suni-deri-pantolon-p02969242.html"
-price1 = 659.95
+price_URL1 = "https://www.trendyol.com/trendyolmilla/siyah-straight-dokuma-yuksek-bel-nervur-dikisli-pantolon-twoss21pl0093-p-71519125?boutiqueId=620236&merchantId=968&sav=true"
+price1 = 167.99
 
 
 # URL lerimizden nesnelerimizi oluşturuyoruz.
@@ -72,7 +72,6 @@ for sira, disc in enumerate(Shop.discount_list):
                 old_price=price_list[sira],
             )
             logger.discount(message=discount_msg)
-            logger2.discount(message=discount_msg)
     except:
         logger.warning(
             message=f"{discount_product.name} Ürünle ile ilgili sıkıntı var yetiş {discount_product.URL}")
