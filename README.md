@@ -1,4 +1,7 @@
 # Zara-Trendyol Takip Botu
+
+!!!! ZARA KISMINDA ŞUAN SORUN VAR LÜTFEN SADECE TRENDYOL LİNKLERİNİ EKLEYİN
+
 Zara - Trendyol  Telegram Bildirimli Stok Fiyat Takip Botu
 
 
